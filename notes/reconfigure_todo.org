@@ -33,7 +33,9 @@
 - ratios.h
   - No changes required
 - record.h
+  - No changes required
 - record_reconfigurator.h
+  - 
 
 * DONE Instances of ~Firstname~ in the config files
 - BlockingConfig.txt
