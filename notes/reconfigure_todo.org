@@ -1,0 +1,41 @@
+* Instances of ~Firstname~ in the ~cpp~ files:
+- attribute.cpp
+  - Changed the delimiter in ~split_string()~ to ~**~ consistent
+    coauthor and ipc code delimiters
+  - Added ~Name~ attribute to the class definitions, inheriting from FirstName
+  - QUESTION: Don't want the name classes to split automatically;
+    currently they assume first/middle are in the first name
+    sequence. Want to avoid that.
+- blocking_operation.cpp
+  - Updated ~cBlocking_Operation_By_Coauthors~ to replace ~cFirstname~
+    with ~cName~; not entirely clear this is correct.
+- cluster.cpp
+  - Also updated the ~get_index~ function to use ~cName~; need to
+    verify that the class reference is right here
+- disambiguate.cpp
+  - Changed all instances of cFirstname to cName
+  - Changed instances of firstname_cur_truncation and
+    firstname_prev_truncation to name_*_truncation
+- engine.cpp
+- newcluster.cpp
+- postprocess.cpp
+- record.cpp
+- record_reconfigurator.cpp
+- training.cpp
+
+
+* Instances of ~Firstname~ in the ~.h~ files:
+- attribute.h
+  - Added a ~LegalId~ class to the set of class definitions
+  - 
+- blocking_operation.h
+  - No changes required
+- ratios.h
+  - No changes required
+- record.h
+- record_reconfigurator.h
+
+* DONE Instances of ~Firstname~ in the config files
+- BlockingConfig.txt
+- EngingConfig.txt
+

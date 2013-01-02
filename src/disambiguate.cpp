@@ -52,7 +52,7 @@ namespace BlockingConfiguration {
     vector<string> active_similarity_attributes;
     const string ACTIVE_SIMILARITY_ATTRIBUTES_LABEL = "ACTIVE SIMILARITY ATTRIBUTES";
     std::auto_ptr<cBlocking_Operation> active_blocker_pointer;
-    uint32_t firstname_cur_truncation = 0;
+    uint32_t name_cur_truncation = 0;
 }
 
 namespace EngineConfiguration {
@@ -178,8 +178,8 @@ int BlockingConfiguration::config_blocking(const char * filename, const string &
                << ", Direction = " << (temp.m_isforward ? "true" : "false")
                << std::endl;
 
-        if (columnname == cFirstname::static_get_class_name())
-            BlockingConfiguration::firstname_cur_truncation = temp.m_nchar;
+        if (columnname == cName::static_get_class_name())
+            BlockingConfiguration::name_cur_truncation = temp.m_nchar;
 
         BlockingConfiguration::BlockingConfig.push_back(temp);
 
@@ -704,9 +704,9 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
         }
 
 
-        uint32_t firstname_prev_truncation = BlockingConfiguration::firstname_cur_truncation;
-        cFirstname::set_truncation(firstname_prev_truncation, BlockingConfiguration::firstname_cur_truncation);
-        firstname_prev_truncation = BlockingConfiguration::firstname_cur_truncation;
+        uint32_t name_prev_truncation = BlockingConfiguration::name_cur_truncation;
+        cName::set_truncation(name_prev_truncation, BlockingConfiguration::name_cur_truncation);
+        name_prev_truncation = BlockingConfiguration::name_cur_truncation;
         match.reset_blocking(*BlockingConfiguration::active_blocker_pointer, oldmatchfile);
 
         if (network_clustering) {

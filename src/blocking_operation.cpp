@@ -328,17 +328,19 @@ cBlocking_Operation_By_Coauthors::extract_blocking_info(const Record * prec) con
 
     const RecordPList top_coauthor_list = get_topN_coauthors(prec, num_coauthors);
     // now make string
-    const uint32_t firstnameindex = Record::get_index_by_name(cFirstname::static_get_class_name());
-    const uint32_t lastnameindex = Record::get_index_by_name(cLastname::static_get_class_name());
+    const uint32_t nameindex = Record::get_index_by_name(cName::static_get_class_name());
+
+    // const uint32_t firstnameindex = Record::get_index_by_name(cFirstname::static_get_class_name());
+    // const uint32_t lastnameindex = Record::get_index_by_name(cLastname::static_get_class_name());
 
     string answer;
 
     RecordPList::const_iterator p = top_coauthor_list.begin();
     for (; p != top_coauthor_list.end(); ++p) {
-        answer += *(*p)->get_data_by_index(firstnameindex).at(0);
+        answer += *(*p)->get_data_by_index(nameindex).at(0);
         answer += cBlocking_Operation::delim;
-        answer += *(*p)->get_data_by_index(lastnameindex).at(0);
-        answer += cBlocking_Operation::delim;
+        // answer += *(*p)->get_data_by_index(lastnameindex).at(0);
+        // answer += cBlocking_Operation::delim;
     }
     if (answer.empty()) answer = infoless;
     return answer;
