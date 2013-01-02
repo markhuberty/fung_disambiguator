@@ -39,7 +39,7 @@ Attribute::split_string(const char* recdata) {
 
     char string_count_cache[10];
 
-    const char delim = '/';
+    const char delim = '**';
     const char secondary_delim = '~';
     const char * q;
     uint32_t count_length;
