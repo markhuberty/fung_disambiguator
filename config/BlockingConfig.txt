@@ -2,7 +2,37 @@
 //ATTENTION: LOOK AT get_prior_value function BEFORE YOU WANT TO CHANGE THE FORMAT.
 //format:
 //attribute name: data index : parameters of string manipulation.
-//parameters of string manipulation for current use: starting position, number of characters to extract, direction.
+//parameters of string manipulation for current use: starting
+position, number of characters to extract, direction (forward=true).
+// Note that a string length of 0 indicates "grab entire string"
+
+// PROPOSED PATSTAT DEFINITIONS
+
+// [ Round 1 ]
+// Name: 1 : 0,0,true
+// LegalId: 1 : 0,0, true
+// Country: 1 : 0,0,true
+// ACTIVE SIMILARITY ATTRIBUTES: Name, Longitude
+
+// [ Round 2 ]
+// Name: 1 : 0,5 , true
+// Country: 1 : 0,0,true
+// ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Longitude, Coauthor, Class
+
+// [ Round 3 ]
+// Name: 1 : 0,3 , true
+// country: 1 : 0,0, true
+// ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Longitude, Coauthor, Class
+
+// [ Round 4 ]
+// Name: 1 : 0,1 , true
+// country: 1 : 0,0, true
+// ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Longitude, Coauthor, Class
+
+
+// END PROPOSED PATSTAT DEFINITIONS
+
+
 [ Round 1 ]
 Firstname: 1 : 0,0 , true
 Middlename: 1 : 0 , 0 , false

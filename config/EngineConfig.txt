@@ -1,14 +1,19 @@
 //Configuration file for the Disambiguation Engine
-WORKING DIRECTORY = /media/data/edwardspace/workplace/testcpp/Disambiguation
-ORIGINAL CSV FILE = /media/data/edwardspace/workplace/testcpp/Disambiguation/invpat.txt
+WORKING DIRECTORY = /mnt/db_master/patstat_raw/disambig_input_data
+ORIGINAL CSV FILE = /mnt/db_master/patstat_raw/disambig_input_data/patstat_input_data.csv
 NUMBER OF THREADS = 2
 GENERATE STABLE TRAINING SETS = true
 USE AVAILABLE RATIOS DATABASE = false
 THRESHOLDS = 0.99, 0.95
-NECESSARY ATTRIBUTES = Firstname, Lastname, Unique_Record_ID, Middlename, Longitude, Class, Latitude, Coauthor, Assignee, AsgNum, Country, Street, ApplyYear, City, Patent
+// NECESSARY ATTRIBUTES = Firstname, Lastname, Unique_Record_ID,
+// Middlename, Longitude, Class, Latitude, Coauthor, Assignee, AsgNum, 
+// Country, Street, ApplyYear, City, Patent
+
+NECESSARY ATTRIBUTES = Name, Unique_Record_ID, Class, Coauthor,
+Latitute, Longitude, Country, Year, Patent
 ADJUST PRIOR BY FREQUENCY = true
 DEBUG MODE = false
 NUMBER OF TRAINING PAIRS = 1000000
 STARTING ROUND = 1
-STARTING FILE = /media/data/edwardspace/workplace/testcpp/Disambiguation/match_cons.txt
+STARTING FILE = /mnt/db_master/patstat_raw/disambig_output/disambig_output.txt
 POSTPROCESS AFTER EACH ROUND = true
