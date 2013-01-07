@@ -1572,28 +1572,50 @@ public:
 
 class cMiddlename : public Attribute_Single_Mode <cMiddlename> {
 
-public:
-    static const uint32_t max_value = 3;
+ public:
+  static const uint32_t max_value = 3;
 
-    cMiddlename(const char * UP(source) = NULL ) {}
+  cMiddlename(const char * UP(source) = NULL ) {}
 
-    uint32_t compare(const Attribute & rhs) const;
+  uint32_t compare(const Attribute & rhs) const;
 
-    bool split_string(const char*);
+  bool split_string(const char*);
 
-    uint32_t get_attrib_max_value() const {
+  uint32_t get_attrib_max_value() const {
 
-        if (!is_comparator_activated()) {
-            Attribute::get_attrib_max_value();
-        }
-        return max_value;
+    if (!is_comparator_activated()) {
+      Attribute::get_attrib_max_value();
     }
-
-    int exact_compare(const Attribute & rhs) const {
-      return this == & rhs;
-    }
+    return max_value;
+  }
+  
+  int exact_compare(const Attribute & rhs) const {
+    return this == & rhs;
+  }
 };
 
+class cLegalId : public Attribute_Single_Mode <cLegalId> {
+ public:
+  static const uint32_t max_value = 5;
+
+  cLegalId(const char * UP(source) = NULL ) {}
+  
+  uint32_t get_attrib_max_value() const {
+    if ( ! is_comparator_activated() ) {
+      Attribute::get_attrib_max_value();
+    }
+    return max_value;
+  }
+  
+  uint32_t compare(const Attribute & rhs) const;
+
+  int exact_compare( const Attribute & rhs ) const { 
+    return this == & rhs; 
+  }
+  
+
+  
+};
 
 class cLatitude_Data : public Attribute_Single_Mode<cLatitude_Data> {};
 
@@ -1707,25 +1729,6 @@ public:
 };
 
 
-class cLegalId : public Attribute_Single_Mode <cLegalId> {
- public:
-  static uint32_t const max_value = 5;
-  cLegalId(const char * UP(source) = NULL ) {}
-  
-  uint32_t get_attrib_max_value() const {
-    if ( ! is_comparator_activated() ) {
-      Attribute::get_attrib_max_value();
-    }
-    return max_value;
-  }
-  
-  int exact_compare( const Attribute & rhs ) const { 
-    return this == & rhs; 
-  }
-  
-  uint32_t compare(const Attribute & right_hand_side) const;
-  
-};
 
 // cClass and cCoauthor are in set_mode, not single_mode
 class cClass: public Attribute_Set_Mode <cClass> {
@@ -1896,7 +1899,6 @@ Attribute_Intermediary<Derived>:: attrib_pool_count_lock = PTHREAD_MUTEX_INITIAL
 
 //declaration ( not definition ) of specialized template
 template <> const string Attribute_Basic<cFirstname>::attrib_group;
-template <> const string Attribute_Basic<cFirstname>::attrib_group;
 template <> const string Attribute_Basic<cLastname>::attrib_group;
 template <> const string Attribute_Basic<cMiddlename>::attrib_group;
 template <> const string Attribute_Basic<cLatitude>::attrib_group;
@@ -1905,7 +1907,7 @@ template <> const string Attribute_Basic<cAssignee>::attrib_group;
 template <> const string Attribute_Basic<cClass>::attrib_group;
 template <> const string Attribute_Basic<cCoauthor>::attrib_group;
 template <> const string Attribute_Basic<cClass_M2>::attrib_group;
-template <> const string Attribute_Basic<cLegalId>::attrib_group;
+template <> const string Attribute_Basic<LegalId>::attrib_group;
 
 
 template <typename Derived> const string Attribute_Basic<Derived>::attrib_group = INERT_ATTRIB_GROUP_IDENTIFIER;

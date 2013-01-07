@@ -383,6 +383,25 @@ cMiddlename::compare(const Attribute & right_hand_side) const {
     }
 }
 
+/*
+  cLegalId::compare:
+  Exact string compare
+
+*/
+uint32_t
+cLegalId::compare(const Attribute & right_hand_side) const {
+
+    if ( ! is_comparator_activated () )
+        throw cException_No_Comparision_Function(static_get_class_name().c_str());
+
+    if ( !this->is_informative() || ! right_hand_side.is_informative() )
+        return 1;
+    if ( this == & right_hand_side )
+        return 2;
+    else
+        return 0;
+}
+
 
 
 /**
