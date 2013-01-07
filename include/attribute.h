@@ -1907,7 +1907,7 @@ template <> const string Attribute_Basic<cAssignee>::attrib_group;
 template <> const string Attribute_Basic<cClass>::attrib_group;
 template <> const string Attribute_Basic<cCoauthor>::attrib_group;
 template <> const string Attribute_Basic<cClass_M2>::attrib_group;
-template <> const string Attribute_Basic<LegalId>::attrib_group;
+template <> const string Attribute_Basic<cLegalId>::attrib_group;
 
 
 template <typename Derived> const string Attribute_Basic<Derived>::attrib_group = INERT_ATTRIB_GROUP_IDENTIFIER;
