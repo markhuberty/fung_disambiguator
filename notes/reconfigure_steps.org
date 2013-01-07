@@ -1,0 +1,67 @@
+#+TITLE: Reconfiguring the Fleming disambigutator for PATSTAT
+#+AUTHOR: Mark Huberty
+#+OPTIONS: toc:nil
+
+
+
+
+* Clearing out Name object naming variance
+  PATSTAT does not distinguish first, middle, and last names. The
+  original disambiguator configuration assumed the existence of those
+  names. Changing this requires far more than just altering the
+  configuration files. 
+
+  These steps were completed:
+  1. Change both ~EngineConfig.txt~ and ~BlockingConfig.txt~ (or
+     equivalent files) to use *Name* rather than *Firstname* /
+     *Middlename* / *Lastname*
+  2. Change the attribute configuration in ~attribute.cpp~ to define a
+     *Name* instance of the *Firstname* class
+  3. Comment out all instances of *Middlename* and *Lastname* in the
+     following files:
+     1. ~training.cpp~
+     2. ~record_reconfigurator.cpp~
+     3. ~disambiguate.cpp~
+     4. ~cluster.cpp~
+     5. ~newcluster.cpp~
+     6. ~blocking_operation.cpp~
+
+* Adding LegalId
+  We separated out firm legal identifiers from the firm names wherever
+  possible. Those were treated as a separate field for
+  disambiguation. Adding a new field like this requires:
+
+  1. Adding a class instance, in this case an instance of
+     ~Attribute_Single_Mode~, to ~attribute.cpp~, with an
+     ~attrib_group~ of "Personal"
+  2. Add a new instance of the ~compare~ function to ~attribute.cpp~
+  3. Add ~LegalId~ to the ~EngineConfig.txt~ and ~BlockingConfig.txt~
+     files as appropriate (must go into the ~NECCESSARY ATTRIBUTES~
+     field)
+
+* Correctly handling year data
+  The ~attribute~ files define several year classes. Only the
+  ~ApplyYear~ class is mandated (it's called within
+  ~update_year_range()~ in ~newcluster.cpp~). Hence the primary year
+  data should use the ~ApplyYear~ class
+
+* Correctly handling Assignee data
+  The USPTO data maintains a distinction between Assignee and
+  Inventor. This appears to usually handle the difference between the
+  person who invented it, and the individual or company that owns the
+  patent. 
+
+  PATSTAT does not have this. Because ~Assignee~ and some variants are
+  hard-coded, this has to be fixed before the code will run. 
+
+* Formatting input data
+  The disambiguator expects data in a CSV file. However, its parser
+  isn't very smart, and so won't tolerate any commas in the CSV file
+  other than the delimiters. Strip out all commas before trying to
+  load data. 
+
+* Changing the delimiter for coauthors and patent codes
+  The default disambiguator code expected a ~/~ delimiter. If your
+  input files are different, the ~delim~ definition in
+  ~split_string~ in ~attribute.cpp~ needs to be updated.
+
