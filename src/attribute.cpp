@@ -171,15 +171,18 @@ template <> const string Attribute_Basic<cFirstname>::class_name = "Name";
 template <> const string Attribute_Basic<cFirstname>::attrib_group = "Personal";
 
 
+template <> const string Attribute_Basic<cLegalId>::class_name = "Legal_ID";
+template <> const string Attribute_Basic<cLegalId>::attrib_group = "Personal";
+
 // Commented out for PATSTAT, which only has NAME
 // template <> const string Attribute_Basic<cFirstname>::class_name = "Firstname";
 // template <> const string Attribute_Basic<cFirstname>::attrib_group = "Personal";
 
-// template <> const string Attribute_Basic<cLastname>::class_name = "Lastname";
-// template <> const string Attribute_Basic<cLastname>::attrib_group = "Personal";
+template <> const string Attribute_Basic<cLastname>::class_name = "Lastname";
+template <> const string Attribute_Basic<cLastname>::attrib_group = "Personal";
 
-// template <> const string Attribute_Basic<cMiddlename>::class_name = "Middlename";
-// template <> const string Attribute_Basic<cMiddlename>::attrib_group = "Personal";
+template <> const string Attribute_Basic<cMiddlename>::class_name = "Middlename";
+template <> const string Attribute_Basic<cMiddlename>::attrib_group = "Personal";
 
 //template <> const string Attribute_Basic<cLatitude>::class_name = "Latitude";
 //template <> const string Attribute_Basic<cLatitude>::interactive_column_names[] = {"Longitude", "Street", "Country"};
@@ -233,8 +236,6 @@ template <> const uint32_t Attribute_Basic<cAssignee>::num_of_interactive_column
 map < const cAsgNum*, uint32_t > cAssignee:: asgnum2count_tree;
 bool cAssignee::is_ready = false;
 template <> const string Attribute_Basic<cAssignee>::attrib_group = "Patent";
-template <> const string cAttribute_Basic<cLegalId>::class_name = "Legal ID";
-
 
 
 template <> const string Attribute_Basic<cAsgNum>::class_name = "AsgNum";

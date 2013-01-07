@@ -1707,18 +1707,24 @@ public:
 };
 
 
-class cLegalId: public cAttribute_Single_Mode <cLegalId> {
-public:
-	static unsigned int const max_value = 2;
-	cCountry(const char * source = NULL ) {}
-	unsigned int get_attrib_max_value() const {
-		if ( ! is_comparator_activated() )
-			cAttribute::get_attrib_max_value();
-		return max_value;
-	}
-	int exact_compare( const cAttribute & rhs ) const { return this == & rhs; }
-	unsigned int compare(const cAttribute & right_hand_side) const;
-
+class cLegalId : public Attribute_Single_Mode <cLegalId> {
+ public:
+  static uint32_t const max_value = 5;
+  cLegalId(const char * UP(source) = NULL ) {}
+  
+  uint32_t get_attrib_max_value() const {
+    if ( ! is_comparator_activated() ) {
+      Attribute::get_attrib_max_value();
+    }
+    return max_value;
+  }
+  
+  int exact_compare( const Attribute & rhs ) const { 
+    return this == & rhs; 
+  }
+  
+  uint32_t compare(const Attribute & right_hand_side) const;
+  
 };
 
 // cClass and cCoauthor are in set_mode, not single_mode
@@ -1899,7 +1905,7 @@ template <> const string Attribute_Basic<cAssignee>::attrib_group;
 template <> const string Attribute_Basic<cClass>::attrib_group;
 template <> const string Attribute_Basic<cCoauthor>::attrib_group;
 template <> const string Attribute_Basic<cClass_M2>::attrib_group;
-template <> const string Attribute_Basic<LegalId>::attrib_group;
+template <> const string Attribute_Basic<cLegalId>::attrib_group;
 
 
 template <typename Derived> const string Attribute_Basic<Derived>::attrib_group = INERT_ATTRIB_GROUP_IDENTIFIER;

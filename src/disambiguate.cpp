@@ -178,7 +178,7 @@ int BlockingConfiguration::config_blocking(const char * filename, const string &
                << ", Direction = " << (temp.m_isforward ? "true" : "false")
                << std::endl;
 
-        if (columnname == cName::static_get_class_name())
+        if (columnname == cFirstname::static_get_class_name())
             BlockingConfiguration::name_cur_truncation = temp.m_nchar;
 
         BlockingConfiguration::BlockingConfig.push_back(temp);
@@ -705,7 +705,7 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
 
 
         uint32_t name_prev_truncation = BlockingConfiguration::name_cur_truncation;
-        cName::set_truncation(name_prev_truncation, BlockingConfiguration::name_cur_truncation);
+        cFirstname::set_truncation(name_prev_truncation, BlockingConfiguration::name_cur_truncation);
         name_prev_truncation = BlockingConfiguration::name_cur_truncation;
         match.reset_blocking(*BlockingConfiguration::active_blocker_pointer, oldmatchfile);
 

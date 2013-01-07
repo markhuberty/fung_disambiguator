@@ -890,13 +890,13 @@ ClusterInfo::disambiguate(const cRatios & ratio,
         }
     }
 
-    const uint32_t fi = Record::get_index_by_name(cName::static_get_class_name());
+    const uint32_t fi = Record::get_index_by_name(cFirstname::static_get_class_name());
     // const uint32_t fi = Record::get_index_by_name(cFirstname::static_get_class_name());
     // const uint32_t li = Record::get_index_by_name(cLastname::static_get_class_name());
     const uint32_t ui = Record::get_index_by_name(cUnique_Record_ID::static_get_class_name());
     std::cout << std::endl;
     std::cout << "Most consolidated cluster: " << * pmax->get_cluster_head().m_delegate->get_data_by_index(fi).at(0)
-              << "." << * pmax->get_cluster_head().m_delegate->get_data_by_index(li).at(0)
+      // << "." << * pmax->get_cluster_head().m_delegate->get_data_by_index(li).at(0)
               << "  ID = " << * pmax->get_cluster_head().m_delegate->get_data_by_index(ui).at(0)
               << ". Size = " << max_inventor << std::endl;
     //////////////// End refactor /////////////////////////
