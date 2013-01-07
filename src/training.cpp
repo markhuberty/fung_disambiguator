@@ -764,8 +764,8 @@ find_rare_names_v2(const vector < RecordPList * > & vec_pdest,
     // step 1: build phrase map: key=phrase(here is firstname+lastname with
     // some delimiters). value= list of unique_ids (here is invnums)
     const string blocks[] = {
-      cFirstname::static_get_class_name(),
-      cLastname::static_get_class_name()
+      cFirstname::static_get_class_name()// ,
+      // cLastname::static_get_class_name()
     };
 
     const uint32_t num_columns_for_blocking = sizeof(blocks)/sizeof(string);
@@ -1011,12 +1011,12 @@ make_stable_training_sets_by_personal(const list <Record> & all_records,
                                       const vector<string> & training_filenames) {
 
     RecordPList rare_firstname_set;
-    RecordPList rare_lastname_set;
+    // RecordPList rare_lastname_set;
 
     const char * current_file;
     vector<RecordPList *> rare_pointer_vec;
     rare_pointer_vec.push_back(&rare_firstname_set);
-    rare_pointer_vec.push_back(&rare_lastname_set);
+    // rare_pointer_vec.push_back(&rare_lastname_set);
     const vector<const RecordPList *> const_rare_pointer_vec(rare_pointer_vec.begin(), rare_pointer_vec.end());
 
     RecordPList record_pointers;
@@ -1025,7 +1025,7 @@ make_stable_training_sets_by_personal(const list <Record> & all_records,
     find_rare_names_v2(rare_pointer_vec, record_pointers);
     vector <string> rare_column_names;
     rare_column_names.push_back(string(cFirstname::static_get_class_name()));
-    rare_column_names.push_back(string(cLastname::static_get_class_name()));
+    // rare_column_names.push_back(string(cLastname::static_get_class_name()));
 
     list<RecordPair> pair_list;
     pair_list.clear();

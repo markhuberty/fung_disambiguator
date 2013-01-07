@@ -45,18 +45,18 @@ uint32_t
 Record::informative_attributes() const {
 
     static const uint32_t firstname_index = Record::get_index_by_name(cFirstname::static_get_class_name());
-    static const uint32_t middlename_index = Record::get_index_by_name(cMiddlename::static_get_class_name());
-    static const uint32_t lastname_index = Record::get_index_by_name(cLastname::static_get_class_name());
-    static const uint32_t assignee_index = Record::get_index_by_name(cAssignee::static_get_class_name());
+    // static const uint32_t middlename_index = Record::get_index_by_name(cMiddlename::static_get_class_name());
+    // static const uint32_t lastname_index = Record::get_index_by_name(cLastname::static_get_class_name());
+    // static const uint32_t assignee_index = Record::get_index_by_name(cAssignee::static_get_class_name());
     static const uint32_t lat_index = Record::get_index_by_name(cLatitude::static_get_class_name());
     static const uint32_t ctry_index = Record::get_index_by_name(cCountry::static_get_class_name());
 
     uint32_t cnt = 0;
 
     this->vector_pdata.at(firstname_index)->is_informative() && (++cnt);
-    this->vector_pdata.at(middlename_index)->is_informative() && (++cnt);
-    this->vector_pdata.at(lastname_index)->is_informative() && (++cnt);
-    this->vector_pdata.at(assignee_index)->is_informative() && (++cnt);
+    // this->vector_pdata.at(middlename_index)->is_informative() && (++cnt);
+    // this->vector_pdata.at(lastname_index)->is_informative() && (++cnt);
+    // this->vector_pdata.at(assignee_index)->is_informative() && (++cnt);
     this->vector_pdata.at(lat_index)->is_informative() && (++cnt);
     this->vector_pdata.at(ctry_index)->is_informative() && (++cnt);
 

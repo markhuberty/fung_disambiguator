@@ -54,8 +54,8 @@ disambiguate_by_set (const Record * key1,
     // TODO: See if these declarations can be moved outside of this function and
     // declared at the file level, which would promote a much nicer refactoring.
     static const uint32_t firstname_index = Record::get_similarity_index_by_name(cFirstname::static_get_class_name());
-    static const uint32_t midname_index   = Record::get_similarity_index_by_name(cMiddlename::static_get_class_name());
-    static const uint32_t lastname_index  = Record::get_similarity_index_by_name(cLastname::static_get_class_name());
+    // static const uint32_t midname_index   = Record::get_similarity_index_by_name(cMiddlename::static_get_class_name());
+    // static const uint32_t lastname_index  = Record::get_similarity_index_by_name(cLastname::static_get_class_name());
     static const uint32_t country_index   = Record::get_index_by_name(cCountry::static_get_class_name());
 
     // TODO: Why are these not configuration parameters?
@@ -93,9 +93,10 @@ disambiguate_by_set (const Record * key1,
         // one of the records has a middle name but the other does not. See
         // the midnamecmp function for details.
         if (screen_p                       < 0.3 ||
-            screen_sp.at(firstname_index) == 0   ||
-            screen_sp.at(midname_index)   == 0   ||
-            screen_sp.at(lastname_index)  == 0) {
+            screen_sp.at(firstname_index) == 0   ) {
+            // screen_sp.at(midname_index)   == 0   ||
+            // screen_sp.at(lastname_index)  == 0
+            // ) {
 
             return std::pair<const Record *, double> (NULL, 0);
         }
@@ -152,9 +153,9 @@ disambiguate_by_set (const Record * key1,
             SimilarityProfile tempsp = (*p)->record_compare(* *q);
 
             // TODO: Consider inlining a template function for this check.
-            if (tempsp.at(firstname_index) == 0 ||
-                tempsp.at(midname_index)   == 0 ||
-                tempsp.at(lastname_index)  == 0) {
+            if (tempsp.at(firstname_index) == 0  ) {
+                // tempsp.at(midname_index)   == 0 ||
+                //tempsp.at(lastname_index)  == 0) {
 
                 return std::pair<const Record *, double> (NULL, 0);
             }
@@ -313,6 +314,7 @@ instantiate_attributes(std::vector<std::string> column_names, int num_cols) {
           delete [] pointer_array;
           throw cException_ColumnName_Not_Found(column_names[i].c_str());
       } else {
+        printf ( "Instantiating %s\n", column_names[i].c_str() );
           pointer_array[i] = create_attribute_instance (column_names[i].c_str() );
       }
 
@@ -693,6 +695,9 @@ create_attribute_instance ( const string & id ) {
     }
     else if ( id == cClass_M2::static_get_class_name() ) {
         p = new cClass_M2;
+    }
+    else if ( id == cLegalId::static_get_class_name() ) {
+        p = new cLegalId;
     }
     else {
         p = NULL;

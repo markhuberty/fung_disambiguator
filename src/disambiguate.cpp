@@ -557,7 +557,7 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
     }
 
 
-    cAssignee::configure_assignee(all_rec_pointers);
+    // cAssignee::configure_assignee(all_rec_pointers);
     //std::cout << "Passed configuring assignees..." << std::endl;
 
     //patent stable
@@ -626,8 +626,8 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
 
     // TODO: Refactor
     std::cout << "Reconfiguring ..." << std::endl;
-    const Reconfigurator_AsianNames corrector_asiannames;
-    std::for_each (all_rec_pointers.begin(), all_rec_pointers.end(), corrector_asiannames);
+    // const Reconfigurator_AsianNames corrector_asiannames;
+    // std::for_each (all_rec_pointers.begin(), all_rec_pointers.end(), corrector_asiannames);
     Reconfigurator_Coauthor corrector_coauthor (blocker_coauthor.get_patent_tree());
     std::for_each (all_rec_pointers.begin(), all_rec_pointers.end(), corrector_coauthor);
     std::cout << "Reconfiguration done." << std::endl;
@@ -685,10 +685,10 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
             vector<string> presort_columns;
             StringRemainSame operator_no_change;
             presort_columns.push_back(cFirstname::static_get_class_name());
-            presort_columns.push_back(cLastname::static_get_class_name());
-            presort_columns.push_back(cAssignee::static_get_class_name());
+            // presort_columns.push_back(cLastname::static_get_class_name());
+            // presort_columns.push_back(cAssignee::static_get_class_name());
             presort_columns.push_back(cStreet::static_get_class_name());
-            presort_columns.push_back(cCity::static_get_class_name());
+            // presort_columns.push_back(cCity::static_get_class_name());
             presort_columns.push_back(cCountry::static_get_class_name());
             //presort_columns.push_back(cClass::static_get_class_name());
 

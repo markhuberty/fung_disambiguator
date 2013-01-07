@@ -388,11 +388,11 @@ Cluster::find_representative()  {
   // a configuration variable.
 	static const string useful_columns[] = {
     cFirstname::static_get_class_name(),
-    cMiddlename::static_get_class_name(),
-    cLastname::static_get_class_name(),
+    // cMiddlename::static_get_class_name(),
+    // cLastname::static_get_class_name(),
     cLatitude::static_get_class_name(),
-    cAssignee::static_get_class_name(),
-    cCity::static_get_class_name(),
+    // cAssignee::static_get_class_name(),
+    // cCity::static_get_class_name(),
     cCountry::static_get_class_name()
   };
 	static const uint32_t numcols = sizeof(useful_columns)/sizeof(string);

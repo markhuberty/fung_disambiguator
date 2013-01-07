@@ -171,7 +171,7 @@ template <> const string Attribute_Basic<cFirstname>::class_name = "Name";
 template <> const string Attribute_Basic<cFirstname>::attrib_group = "Personal";
 
 
-template <> const string Attribute_Basic<cLegalId>::class_name = "Legal_ID";
+template <> const string Attribute_Basic<cLegalId>::class_name = "LegalId";
 template <> const string Attribute_Basic<cLegalId>::attrib_group = "Personal";
 
 // Commented out for PATSTAT, which only has NAME
@@ -191,20 +191,20 @@ template <> const string Attribute_Basic<cMiddlename>::attrib_group = "Personal"
 
 template <> const string Attribute_Basic<cLatitude_Data >::class_name = "Latitude_Data";
 
-template <> const string Attribute_Basic<cLatitude >::class_name = "Latitude";
-template <> const string Attribute_Basic<cLatitude >::interactive_column_names[] = {"Longitude", "Street", "Country"};
+template <> const string Attribute_Basic<cLatitude >::class_name = "Lat";
+template <> const string Attribute_Basic<cLatitude >::interactive_column_names[] = {"Lng", "Address", "Country"};
 template <> const uint32_t Attribute_Basic<cLatitude >::num_of_interactive_columns = 3;
 template <> const string Attribute_Basic<cLatitude >::attrib_group = "Patent";
 
 template <> const string Attribute_Basic<cLongitude_Data >::class_name = "Longitude_Data";
-template <> const string Attribute_Basic<cLongitude>::class_name = "Longitude";
+template <> const string Attribute_Basic<cLongitude>::class_name = "Lng";
 //template <> const string Attribute_Basic<cLongitude >::class_name = "Longitude";
-template <> const string Attribute_Basic<cLongitude >::interactive_column_names[] = {"Latitude"};
+template <> const string Attribute_Basic<cLongitude >::interactive_column_names[] = {"Lat"};
 template <> const uint32_t Attribute_Basic<cLongitude >::num_of_interactive_columns = 1;
 template <> const string Attribute_Basic<cLongitude >::attrib_group = "Patent";
 
 
-template <> const string Attribute_Basic<cStreet>::class_name = "Street";
+template <> const string Attribute_Basic<cStreet>::class_name = "Address";
 // All the following are new
 template <> const string Attribute_Basic<cState>::class_name = "State";
 template <> const string Attribute_Basic<cZipcode>::class_name = "Zipcode";
@@ -242,7 +242,7 @@ template <> const string Attribute_Basic<cAsgNum>::class_name = "AsgNum";
 
 template <> const string Attribute_Basic<cUnique_Record_ID>::class_name = "Unique_Record_ID";
 
-template <> const string Attribute_Basic<cApplyYear>::class_name = "ApplyYear";
+template <> const string Attribute_Basic<cApplyYear>::class_name = "Year";
 template <> const string Attribute_Basic<cAppYear>::class_name = "AppYear";
 template <> const string Attribute_Basic<cGYear>::class_name = "GYear";
 

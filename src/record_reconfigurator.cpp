@@ -123,9 +123,9 @@ Reconfigurator_Coauthor::reconfigure(const Record * p) const {
 
     static const string dot = ".";
     static const unsigned int firstnameindex = Record::get_index_by_name(cFirstname::static_get_class_name());
-    static const unsigned int lastnameindex = Record::get_index_by_name(cLastname::static_get_class_name());
+    // static const unsigned int lastnameindex = Record::get_index_by_name(cLastname::static_get_class_name());
     static const StringExtractFirstWord firstname_extracter;
-    static const StringRemoveSpace lastname_extracter;
+    // static const StringRemoveSpace lastname_extracter;
 
     map<const Record *, RecordPList, cSort_by_attrib>::const_iterator cpm;
     cCoauthor temp;
@@ -143,8 +143,9 @@ Reconfigurator_Coauthor::reconfigure(const Record * p) const {
         if (*q == p)
             continue;
 
-        string fullname = firstname_extracter.manipulate( * (*q)->get_data_by_index(firstnameindex).at(0) ) + dot
-                            + lastname_extracter.manipulate( * (*q)->get_data_by_index(lastnameindex).at(0) );
+        string fullname = firstname_extracter.manipulate( * (*q)->get_data_by_index(firstnameindex).at(0) ); // +
+          //dot
+          //                  + lastname_extracter.manipulate( * (*q)->get_data_by_index(lastnameindex).at(0) );
         temp.attrib_set.insert(cCoauthor::static_add_string (fullname) );
     }
 
