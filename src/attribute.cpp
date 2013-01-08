@@ -246,7 +246,7 @@ template <> const string Attribute_Basic<cApplyYear>::class_name = "Year";
 template <> const string Attribute_Basic<cAppYear>::class_name = "AppYear";
 template <> const string Attribute_Basic<cGYear>::class_name = "GYear";
 
-template <> const string Attribute_Basic<cCity>::class_name = "City";
+template <> const string Attribute_Basic<cCity>::class_name = "Locality";
 
 template <> const string Attribute_Basic<cPatent>::class_name = "Patent";
 

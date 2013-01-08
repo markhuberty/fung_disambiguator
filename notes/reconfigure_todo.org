@@ -41,3 +41,43 @@
 - BlockingConfig.txt
 - EngingConfig.txt
 
+
+* Notes on fixing the blocking functions
+  - For name-based blocking:
+    - right now, ~build_word_map~ in ~training.cpp~ looks at all "words"
+      as defined by ~delim~-separated strings in a name string. Assumes
+      a form of ~firstname<delim>lastname~. But that's problematic for
+      company names, b/c we only have names, and names can have > 1
+      ~delim~ that doesn't necessarily separate useful stuff (e.g.,
+      weird spellings of company name or legal id or whatever)
+    - So we can do one of two things:
+      - Assume that the rare names thing will work OK b/c the threshold
+        values will filter out the crap
+      - Rewrite the rare names calculus
+  - For the non-match sets for names
+    - This currently uses records for which (1) coauthors don't match
+      and (2) ipc classes don't match and (3) are listed in different
+      cities in the same year and don't have the same assignee.
+    - We don't have assignees or cities.
+    - Options:
+      - Discard the secondary characteristics (city, assignee)
+      - Use address or lat,lng in place of city (address is easier,
+        latlng would require some kind of match function, right now
+        the compares are just straight ~==~ in
+        ~cBlocking_For_Training::create_xset01_on_block()~). 
+      - Would be good to have some other criteria. Concern is that
+        latlng is a messy thing. could re-do geocode to return the
+        locality as well, which is usually close to the city.
+      - Mods need to occur in ~utilities.cpp~, line 52 or so, inside
+        ~make_changeable_training_sets_by_patent~.
+  - Possibility:
+    - Re-geocode everything and take 'locality' as well as the lat-lng
+      data
+    - Handle the name match the way it's done now
+    - Handle the non-match using 'locality' (that is, no ipc match, no
+      coauthor match, different localities, same year).
+    - Notice here that:
+      - We implicitly handle assignee b/c it should be in the coauthor
+        field (no distinction between authors and assignees)
+      - 
+        
