@@ -55,7 +55,7 @@ post_polish(ClusterSet & m,
     const double asian_threshold = 0.99;
     double threshold = normal_threshold ;
     const unsigned int fi = Record::get_index_by_name(cFirstname::static_get_class_name());
-    const unsigned int li = Record::get_index_by_name(cLastname::static_get_class_name());
+    // const unsigned int li = Record::get_index_by_name(cLastname::static_get_class_name());
     const unsigned int country_index = Record::get_index_by_name(cCountry::static_get_class_name());
     const unsigned int uid_index = Record::get_index_by_name(cUnique_Record_ID::static_get_class_name());
 
@@ -109,12 +109,12 @@ post_polish(ClusterSet & m,
             }
             const string * centerfirst = center_first_attrib->get_data().at(0);
 
-            const Attribute * center_last_attrib = q->get_cluster_head().m_delegate->get_attrib_pointer_by_index(li);
-            if ( center_last_attrib->get_data().empty() ) {
-                q->get_cluster_head().m_delegate->print();
-                throw cException_Other("Center Last");
-            }
-            const string * centerlast = center_last_attrib->get_data().at(0);
+            // const Attribute * center_last_attrib = q->get_cluster_head().m_delegate->get_attrib_pointer_by_index(li);
+            // if ( center_last_attrib->get_data().empty() ) {
+            //     q->get_cluster_head().m_delegate->print();
+            //     throw cException_Other("Center Last");
+            // }
+            // const string * centerlast = center_last_attrib->get_data().at(0);
 
             const Attribute * center_uid_attrib = q->get_cluster_head().m_delegate->get_attrib_pointer_by_index(uid_index);
             if ( center_uid_attrib->get_data().empty() ) {
@@ -139,12 +139,12 @@ post_polish(ClusterSet & m,
                 }
                 const string * pfirst = pfirst_attrib->get_data().at(0);
 
-                const Attribute * plast_attrib = (*r)->get_attrib_pointer_by_index(li);
-                if ( plast_attrib->get_data().empty() ) {
-                    (*r)->print();
-                    throw cException_Other("P Last");
-                }
-                const string * plast = plast_attrib->get_data().at(0);
+                // const Attribute * plast_attrib = (*r)->get_attrib_pointer_by_index(li);
+                // if ( plast_attrib->get_data().empty() ) {
+                //     (*r)->print();
+                //     throw cException_Other("P Last");
+                // }
+                // const string * plast = plast_attrib->get_data().at(0);
 
                 const Attribute * puid_attrib = (*r)->get_attrib_pointer_by_index(uid_index);
                 if ( puid_attrib->get_data().empty() ) {
@@ -167,12 +167,12 @@ post_polish(ClusterSet & m,
                     const string * qfirst = qfirst_attrib->get_data().at(0);
 
 
-                    const Attribute * qlast_attrib = (*s)->get_attrib_pointer_by_index(li);
-                    if ( qlast_attrib->get_data().empty() ) {
-                        (*s)->print();
-                        throw cException_Other("Q Last");
-                    }
-                    const string * qlast = qlast_attrib->get_data().at(0);
+                    // const Attribute * qlast_attrib = (*s)->get_attrib_pointer_by_index(li);
+                    // if ( qlast_attrib->get_data().empty() ) {
+                    //     (*s)->print();
+                    //     throw cException_Other("Q Last");
+                    // }
+                    // const string * qlast = qlast_attrib->get_data().at(0);
 
                     const Attribute * quid_attrib = (*s)->get_attrib_pointer_by_index(uid_index);
                     if ( quid_attrib->get_data().empty() ) {
@@ -184,10 +184,10 @@ post_polish(ClusterSet & m,
 
 
                     double first_score = strcmp95_modified(pfirst->c_str(), qfirst->c_str());
-                    double last_score = strcmp95_modified(plast->c_str(), qlast->c_str());
+                    // double last_score = strcmp95_modified(plast->c_str(), qlast->c_str());
 
-                    if ( first_score > threshold  && last_score > threshold  ) {
-                        pplog << *pfirst << "." << *plast << " = " << *qfirst << "." << *qlast << " <----- " << *centerfirst << "."<< *centerlast << "        ||       ";
+                    if ( first_score > threshold /* && last_score > threshold*/  ) {
+                        pplog << *pfirst << "." << *qfirst << " <----- " << *centerfirst << "        ||       ";
                         pplog << *puid << " = " << * quid << " <----- " << *centeruid << std::endl;
 
                         z = record2cluster.find(*r);

@@ -487,9 +487,9 @@ disambiguate_main(std::string & engineconf, std::string & blockingconf) {
         Cluster::set_reference_patent_tree_pointer( patent_tree);
         list < const Record *> all_rec_pointers;
         for ( list<Record>::const_iterator p = all_records.begin(); p != all_records.end(); ++p )
-            all_rec_pointers.push_back(&(*p));
-        cAssignee::configure_assignee(all_rec_pointers);
-
+          all_rec_pointers.push_back(&(*p));
+        // cAssignee::configure_assignee(all_rec_pointers);
+        
         ClusterSet up, low;
         up.read_from_file(upper.c_str(), uid_dict);
         low.read_from_file(lower.c_str(), uid_dict);
