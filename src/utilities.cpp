@@ -49,7 +49,7 @@ make_changable_training_sets_by_patent(const list <const Record*> & record_point
     // TODO: Refactor into it's own function
     //xset01
     const string xset01_equal_name_array[] = { cApplyYear::static_get_class_name() };
-    const string xset01_nonequal_name_array[] = { cAsgNum::static_get_class_name(), cCity::static_get_class_name() };
+    const string xset01_nonequal_name_array[] = {cCity::static_get_class_name() };
 
     const vector <string> xset01_equal_name_vec (xset01_equal_name_array,
         xset01_equal_name_array + sizeof(xset01_equal_name_array)/sizeof(string));
