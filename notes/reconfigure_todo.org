@@ -81,3 +81,9 @@
         field (no distinction between authors and assignees)
       - 
         
+* Resolution on fixing the match/nonmatch encoding
+  - Re-geocode the data to include locality, and use that as the
+    'city' in the non-match non-name training data set constructor
+  - Dump AsgNum as a criteria for the non-name non-match dataset; it's
+    implicitly handled b/c the criteria already ensure no coauthor overlap
+  - Use the name match logic as-is
