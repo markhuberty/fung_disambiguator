@@ -57,7 +57,7 @@ BlockByColumns::extract_blocking_info(const Record * p) const {
 
     string temp;
     for (uint32_t i = 0; i < vsm.size(); ++i) {
-
+      printf(i);
         uint32_t index = pdata_indice.at(i);
         //temp += vsm[i]->manipulate(* p->get_data_by_index(indice[i]).at(pdata_indice.at(i)));
         temp += vsm[i]->manipulate(* p->get_data_by_index(indice[i]).at(index));
