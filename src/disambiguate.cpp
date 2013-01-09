@@ -707,10 +707,12 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
         uint32_t name_prev_truncation = BlockingConfiguration::name_cur_truncation;
         cFirstname::set_truncation(name_prev_truncation, BlockingConfiguration::name_cur_truncation);
         name_prev_truncation = BlockingConfiguration::name_cur_truncation;
+        std::cout << "Resetting blocking" << std:endl;
         match.reset_blocking(*BlockingConfiguration::active_blocker_pointer, oldmatchfile);
 
         if (network_clustering) {
-          printf('In network clustering block')
+          std::cout << "In network clustering block" << std::endl;
+
             // TODO: Try to refactor this block.
             blocker_coauthor.build_uid2uinv_tree(match);
             ClusterSet cs;
@@ -724,7 +726,8 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
 
 
         if (!use_available_ratios) {
-          printf('Generating ratios')
+          std::cout << "Generating ratios" << std::endl;
+
             const BlockByColumns & blocker_ref =
                     dynamic_cast<BlockByColumns &> (*BlockingConfiguration::active_blocker_pointer);
             make_changable_training_sets_by_patent(all_rec_pointers, blocker_ref.get_blocking_attribute_names(),
