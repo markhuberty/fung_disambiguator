@@ -707,8 +707,9 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
         uint32_t name_prev_truncation = BlockingConfiguration::name_cur_truncation;
         cFirstname::set_truncation(name_prev_truncation, BlockingConfiguration::name_cur_truncation);
         name_prev_truncation = BlockingConfiguration::name_cur_truncation;
-        std::cout << "Resetting blocking" << std:endl;
+        std::cout << "Resetting blocking" << std::endl;
         match.reset_blocking(*BlockingConfiguration::active_blocker_pointer, oldmatchfile);
+        std::cout << "Blocking reset" << std::endl;
 
         if (network_clustering) {
           std::cout << "In network clustering block" << std::endl;

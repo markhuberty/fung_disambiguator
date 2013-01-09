@@ -133,7 +133,7 @@ ClusterInfo::retrieve_last_comparision_info (
         RecordPList empty_set;
         //map<const string*, map<const Record *, double> >::iterator prim_co_iter;
         uint32_t count = 0;
-        const uint32_t base = 100000;
+        const uint32_t base = 1000;//00;
 
 
         // TODO: Refactor all these clearing calls into a
@@ -150,10 +150,11 @@ ClusterInfo::retrieve_last_comparision_info (
         if (infile.good()) {
             string filedata;
             ClusterList::iterator pm;
+            std::cout << "Reading in the outputfile" << std::endl;
 
             while (getline(infile, filedata)) {
 
-
+              std::cout << "In file load loop" << std::endl;
               //////// TODO: Refactor ////////////////////////////////////////////////////////
                 map<string, ClusterList>::iterator prim_iter;
                 register size_t pos = 0, prev_pos = 0;
@@ -164,6 +165,8 @@ ClusterInfo::retrieve_last_comparision_info (
                 vector<string> column_part (num_columns) ;
 
                 for (uint32_t i = 0; i < num_columns; ++i) {
+                  std::cout << "getting column data" << std::endl;
+
                     const string temp = blocker.extract_column_info(key, i);
                     column_part.at(i) = temp;
                 }
@@ -175,6 +178,7 @@ ClusterInfo::retrieve_last_comparision_info (
                 pos = filedata.find(primary_delim, prev_pos);
                 double val = 0;
                 if (is_matching) {
+                  std::cout << 'is_matching' << std::endl;
                     string cohesionstring = filedata.substr( prev_pos, pos - prev_pos);
                     val = atof(cohesionstring.c_str());
                 }
@@ -183,6 +187,7 @@ ClusterInfo::retrieve_last_comparision_info (
 
                 RecordPList tempv;
                 while (( pos = filedata.find(secondary_delim, prev_pos))!= string::npos){
+                  std::cout << "secondary" << std::endl;
                     string valuestring = filedata.substr( prev_pos, pos - prev_pos);
                     const Record * value = retrieve_record_pointer_by_unique_id(valuestring, *uid2record_pointer);
                     tempv.push_back(value);
@@ -302,19 +307,24 @@ ClusterInfo::reset_blocking(const cBlocking_Operation & blocker,
     total_num = 0;
     useless = blocker.get_useless_string();
 
+    std::cout << "Getting prior comparison data" << std::endl;
+    std::cout << past_comparision_file << std::endl;
+
     retrieve_last_comparision_info(blocker, past_comparision_file);
+    std::cout << "comparison info retrieved" << std::endl;
 
     for (map<string, ClusterList>::iterator p = cluster_by_block.begin();
         p != cluster_by_block.end(); ++p) {
 
-        ClusterList::iterator cp = p->second.begin();
+      ClusterList::iterator cp = p->second.begin();
+      std::cout << "Scanning for middlename" << std::endl;
         for (; cp != p->second.end(); ++cp) {
             if (cMiddlename::is_enabled()) {
                 cp->change_mid_name();
             }
         }
     }
-
+    std::cout << "Scanning blocks" << std::endl;
     for (map<string, ClusterList>::const_iterator p = cluster_by_block.begin();
          p != cluster_by_block.end(); ++p) {
 

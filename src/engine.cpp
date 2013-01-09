@@ -314,7 +314,7 @@ instantiate_attributes(std::vector<std::string> column_names, int num_cols) {
           delete [] pointer_array;
           throw cException_ColumnName_Not_Found(column_names[i].c_str());
       } else {
-        printf ( "Instantiating %s\n", column_names[i].c_str() );
+        std::cout << "Instantiating %s\n" << column_names[i].c_str()  << std::endl;
           pointer_array[i] = create_attribute_instance (column_names[i].c_str() );
       }
 
