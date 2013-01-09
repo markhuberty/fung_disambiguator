@@ -710,6 +710,7 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
         match.reset_blocking(*BlockingConfiguration::active_blocker_pointer, oldmatchfile);
 
         if (network_clustering) {
+          printf('In network clustering block')
             // TODO: Try to refactor this block.
             blocker_coauthor.build_uid2uinv_tree(match);
             ClusterSet cs;
@@ -723,6 +724,7 @@ Full_Disambiguation( const char * EngineConfigFile, const char * BlockingConfigF
 
 
         if (!use_available_ratios) {
+          printf('Generating ratios')
             const BlockByColumns & blocker_ref =
                     dynamic_cast<BlockByColumns &> (*BlockingConfiguration::active_blocker_pointer);
             make_changable_training_sets_by_patent(all_rec_pointers, blocker_ref.get_blocking_attribute_names(),
