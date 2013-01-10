@@ -1,24 +1,24 @@
 //Configuration file for the Disambiguation Blocking Mechanism
+// See blocking_config_readme.org for file formats and how they 
+// relate to attribute structure
 //ATTENTION: LOOK AT get_prior_value function BEFORE YOU WANT TO CHANGE THE FORMAT.
 //format:
-//attribute name: data index : parameters of string manipulation.
+//attribute name: attribute object index : parameters of string manipulation.
 //parameters of string manipulation for current use: starting
 position, number of characters to extract, direction (forward=true).
 // Note that a string length of 0 indicates "grab entire string"
-// Note that dataindex here becomes pdata_indice in the 
-// blocking code; unclear whether it counts from 1 or 0, looks like 0
 
 // PROPOSED PATSTAT DEFINITIONS
 
 [ Round 1 ]
-Name: 0 : 0,6,true
+Name: 1 : 0,6,true
 LegalId: 0 : 0,0, true
 Locality: 0 : 0,0, true
 ACTIVE SIMILARITY ATTRIBUTES: Name, Lng
 
 [ Round 2 ]
 Name: 1 : 0,5 , true
-Locality: 1 : 0,0, true
+Locality: 0 : 0,0, true
 ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Lng, Coauthor, Class
 
 [ Round 3 ]

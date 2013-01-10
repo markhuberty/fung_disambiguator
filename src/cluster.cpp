@@ -150,32 +150,32 @@ ClusterInfo::retrieve_last_comparision_info (
         if (infile.good()) {
             string filedata;
             ClusterList::iterator pm;
-            std::cout << "Reading in the outputfile" << std::endl;
+            // std::cout << "Reading in the outputfile" << std::endl;
 
             while (getline(infile, filedata)) {
 
-              std::cout << "In file load loop" << std::endl;
+              // std::cout << "In file load loop" << std::endl;
               //////// TODO: Refactor ////////////////////////////////////////////////////////
                 map<string, ClusterList>::iterator prim_iter;
                 register size_t pos = 0, prev_pos = 0;
 
-                std::cout << "finding file position" << std::endl;
+                // std::cout << "finding file position" << std::endl;
                 pos = filedata.find(primary_delim, prev_pos);
 
-                std::cout << "getting substring" << std::endl;
+                // std::cout << "getting substring" << std::endl;
                 string keystring = filedata.substr(prev_pos, pos - prev_pos);
 
-                std::cout << "retrieving record pointer for " << keystring << std::endl;
+                // std::cout << "retrieving record pointer for " << keystring << std::endl;
                 const Record * key = retrieve_record_pointer_by_unique_id(keystring, *uid2record_pointer);
 
-                std::cout << "getting blocking info" << std::endl;
+                // std::cout << "getting blocking info" << std::endl;
                 const string b_id = blocker.extract_blocking_info(key);
 
-                std::cout << 'extracted blocking info' << std::endl;
+                // std::cout << 'extracted blocking info' << std::endl;
                 vector<string> column_part (num_columns) ;
 
                 for (uint32_t i = 0; i < num_columns; ++i) {
-                  std::cout << "getting column data" << std::endl;
+                  // std::cout << "getting column data" << std::endl;
 
                     const string temp = blocker.extract_column_info(key, i);
                     column_part.at(i) = temp;
@@ -188,7 +188,7 @@ ClusterInfo::retrieve_last_comparision_info (
                 pos = filedata.find(primary_delim, prev_pos);
                 double val = 0;
                 if (is_matching) {
-                  std::cout << 'is_matching' << std::endl;
+                  // std::cout << 'is_matching' << std::endl;
                     string cohesionstring = filedata.substr( prev_pos, pos - prev_pos);
                     val = atof(cohesionstring.c_str());
                 }
@@ -197,7 +197,7 @@ ClusterInfo::retrieve_last_comparision_info (
 
                 RecordPList tempv;
                 while (( pos = filedata.find(secondary_delim, prev_pos))!= string::npos){
-                  std::cout << "secondary" << std::endl;
+
                     string valuestring = filedata.substr( prev_pos, pos - prev_pos);
                     const Record * value = retrieve_record_pointer_by_unique_id(valuestring, *uid2record_pointer);
                     tempv.push_back(value);

@@ -144,7 +144,16 @@ public:
       // a vector<const string *>, but I'm not sure what these strings are.
       // Probably, they are simply the attribute names. It's all so horribly meta.
       // TODO: try printing this out in the record unit test.
-      std::cout << "vector size " << vector_pdata.size() << std::endl;
+
+
+      #if 0
+      for (int j = 0; j < vector_pdata.at(i)->get_data().size(); j++) {
+
+        std::cout << *vector_pdata.at(i)->get_data().at(j) << std::endl;
+
+      }
+      #endif
+      
       return vector_pdata.at(i)->get_data();
     };
 
