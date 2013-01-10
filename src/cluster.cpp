@@ -158,10 +158,20 @@ ClusterInfo::retrieve_last_comparision_info (
               //////// TODO: Refactor ////////////////////////////////////////////////////////
                 map<string, ClusterList>::iterator prim_iter;
                 register size_t pos = 0, prev_pos = 0;
+
+                std::cout << "finding file position" << std::endl;
                 pos = filedata.find(primary_delim, prev_pos);
+
+                std::cout << "getting substring" << std::endl;
                 string keystring = filedata.substr(prev_pos, pos - prev_pos);
+
+                std::cout << "retrieving record pointer for " << keystring << std::endl;
                 const Record * key = retrieve_record_pointer_by_unique_id(keystring, *uid2record_pointer);
+
+                std::cout << "getting blocking info" << std::endl;
                 const string b_id = blocker.extract_blocking_info(key);
+
+                std::cout << 'extracted blocking info' << std::endl;
                 vector<string> column_part (num_columns) ;
 
                 for (uint32_t i = 0; i < num_columns; ++i) {

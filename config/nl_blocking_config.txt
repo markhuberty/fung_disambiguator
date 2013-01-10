@@ -9,14 +9,14 @@ position, number of characters to extract, direction (forward=true).
 // PROPOSED PATSTAT DEFINITIONS
 
 [ Round 1 ]
-Name: 1 : 0,8,true
+Name: 1 : 0,6,true
 LegalId: 1 : 0,0, true
 Locality: 1 : 0, 0, true
 ACTIVE SIMILARITY ATTRIBUTES: Name, Lng
 
 [ Round 2 ]
 Name: 1 : 0,5 , true
-Locality: 1, 0,0, true
+Locality: 1 : 0,0, true
 ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Lng, Coauthor, Class
 
 [ Round 3 ]

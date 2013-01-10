@@ -33,7 +33,10 @@ objects = attribute.o engine.o comparators.o blocking_operation.o cluster.o \
           record_reconfigurator.o string_manipulator.o threading.o training.o \
           utilities.o strcmp95.o ratio_smoothing.o postprocess.o
 
-CFLAGS=-O3  -Wall -fno-inline -DIL_STD
+## Normal
+#CFLAGS=-O3  -Wall -fno-inline -DIL_STD
+## Debug
+CFLAGS=-g  -Wall -fno-inline -DIL_STD
 
 %.o: %.cpp
 	$(CXX)  $(CFLAGS) $(INCLUDES) -c $<
