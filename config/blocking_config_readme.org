@@ -1,0 +1,67 @@
+* Format of the ~config~ file:
+
+#+BEGIN_SRC 
+[Round 1]
+attribute : attribute_index : read_from_index, read_to_index, read_forward
+#+END_SRC
+
+1. ~attribute~ is the name of the attribute and must correspond
+   to the attribute name as defined in ~attribute.cpp~
+2. ~attribute_index~ is the index in the ~Attribute~ /object/ to read
+   from. If an object has > 1 attribute, this may be non-zero. See the
+   *Firstname* discussion below
+3. ~read_from_index~ is the /position/ in the element read from
+   ~Attribute~ position ~attribute_index~ to start looking at (i.e.,
+   if this is a name like 'Bob', ~read_from_index~ starts reading the
+   string at "B")
+4. ~read_to_index~ is the position to stop reading at. This is how the
+   blocking stringency is controlled for: a larger number here implies
+   a larger number of characters for this field that have to match
+
+
+* Specific object example: *Firstname*
+
+The *Firstname* object presents an example for why ~attribute_index~
+might not be zero. From the ~attribute.cpp~ file, we see that
+~Firstname~ stores the name in two different ways:
+
+#+BEGIN_SRC C
+/**
+ * cFirstname::split_string does 3 things:
+ * 1. Extract the first name from an input string, which is usually mixed with first name and middle name.
+ *       i.e. Input string = "JOHN David WILLIAM", extracted string = "JOHN"
+ * 2. Keep the original copy of the original input string.
+ * 3. Save the first extracted string in data[0], and the second original copy in data[1].
+ */
+#+END_SRC
+
+In this instance, blocking on the entire first name would require
+reading from ~attribute_index~ 1 (where the original is stored). 
+
+In contrast, for an attribute of class ~cStreet~ has only one element
+per attribute, so reading from ~attribute_index~ 0 is correct here. 
+
+* Example config file
+#+BEGIN_SRC 
+// Here Name is an instance of Firstname
+[ Round 1 ]
+Name: 1 : 0,6,true
+LegalId: 0 : 0,0, true
+Locality: 0 : 0,0, true
+ACTIVE SIMILARITY ATTRIBUTES: Name, Lng
+
+[ Round 2 ]
+Name: 1 : 0,5 , true
+Locality: 1 : 0,0, true
+ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Lng, Coauthor, Class
+
+[ Round 3 ]
+Name: 1 : 0,3 , true
+ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Lng, Coauthor, Class
+
+[ Round 4 ]
+Name: 1 : 0,1 , true
+ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Lng, Coauthor, Class
+
+#+END_SRC
+
