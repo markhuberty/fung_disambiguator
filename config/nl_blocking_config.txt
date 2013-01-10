@@ -5,13 +5,15 @@
 //parameters of string manipulation for current use: starting
 position, number of characters to extract, direction (forward=true).
 // Note that a string length of 0 indicates "grab entire string"
+// Note that dataindex here becomes pdata_indice in the 
+// blocking code; unclear whether it counts from 1 or 0, looks like 0
 
 // PROPOSED PATSTAT DEFINITIONS
 
 [ Round 1 ]
-Name: 1 : 0,6,true
-LegalId: 1 : 0,0, true
-Locality: 1 : 0, 0, true
+Name: 0 : 0,6,true
+LegalId: 0 : 0,0, true
+Locality: 0 : 0,0, true
 ACTIVE SIMILARITY ATTRIBUTES: Name, Lng
 
 [ Round 2 ]
