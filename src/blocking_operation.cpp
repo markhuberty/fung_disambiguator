@@ -65,6 +65,14 @@ BlockByColumns::extract_blocking_info(const Record * p) const {
         std::cout << "indice " << indice.size() << std::endl;
         //temp += vsm[i]->manipulate(* p->get_data_by_index(indice[i]).at(pdata_indice.at(i)));
         int temp_data = p->get_data_by_index(indice[i]).size();
+
+    for (int j = 0; i < temp_data; j++) {
+
+      std::cout << p->get_data_by_index(indice[i]).at(j) << std::endl;
+
+    }
+        
+        
         std::cout << temp_data << std::endl;
 
         temp += vsm[i]->manipulate(* p->get_data_by_index(indice[i]).at(index));
