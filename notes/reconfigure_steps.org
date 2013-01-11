@@ -54,6 +54,18 @@
   PATSTAT does not have this. Because ~Assignee~ and some variants are
   hard-coded, this has to be fixed before the code will run. 
 
+  ~utilities.cpp~ defines ~make_changable_training_sets_by_patent~. The
+  training values for ~xset01~, which produces the nonmatch patent
+  comparison training data, assume both City and Assignee. 
+
+  To fix this, two things must occur:
+  1. Remove on instance of ~x_extract_nonequal.push_back(&donotchange)~
+  2. Remove ~cAssignee~ from the definition of
+     ~xset01_nonequal_name_array~
+
+  If both aren't done, then the code errors out when it checks whether
+  the object lengths match.
+  
 * Formatting input data
   The disambiguator expects data in a CSV file. However, its parser
   isn't very smart, and so won't tolerate any commas in the CSV file
@@ -65,3 +77,6 @@
   input files are different, the ~delim~ definition in
   ~split_string~ in ~attribute.cpp~ needs to be updated.
 
+
+
+* Correctly handling the "nomatch" training sets
