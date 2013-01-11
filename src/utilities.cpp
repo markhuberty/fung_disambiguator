@@ -42,7 +42,9 @@ make_changable_training_sets_by_patent(const list <const Record*> & record_point
     vector <const StringManipulator*> t_extract_equal, t_extract_nonequal, x_extract_equal, x_extract_nonequal;
     x_extract_equal.push_back(&donotchange);
     x_extract_nonequal.push_back(&donotchange);
-    x_extract_nonequal.push_back(&donotchange);
+    
+    // Only need one since xset01_nonequal_name_array has only city
+    // x_extract_nonequal.push_back(&donotchange);
 
     std::ofstream outfile;
 

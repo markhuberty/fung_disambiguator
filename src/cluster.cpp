@@ -327,7 +327,7 @@ ClusterInfo::reset_blocking(const cBlocking_Operation & blocker,
         p != cluster_by_block.end(); ++p) {
 
       ClusterList::iterator cp = p->second.begin();
-      std::cout << "Scanning for middlename" << std::endl;
+      // std::cout << "Scanning for middlename" << std::endl;
         for (; cp != p->second.end(); ++cp) {
             if (cMiddlename::is_enabled()) {
                 cp->change_mid_name();
