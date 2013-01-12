@@ -113,7 +113,8 @@ public:
       : sm(inputsm), column_index(Record::get_index_by_name(colname)) {
         infoless = delim;
     }
-
+    // might be problematic here for PATSTAT if blocking on NAME b/c 
+    // NAME.at(0) is first word in name only; dump name splitter?
     string extract_blocking_info(const Record * p) const {
       return sm.manipulate(* p->get_data_by_index(column_index).at(0));
     }

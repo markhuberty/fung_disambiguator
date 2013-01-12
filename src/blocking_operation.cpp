@@ -347,7 +347,9 @@ cBlocking_Operation_By_Coauthors::extract_blocking_info(const Record * prec) con
 
     RecordPList::const_iterator p = top_coauthor_list.begin();
     for (; p != top_coauthor_list.end(); ++p) {
-        answer += *(*p)->get_data_by_index(nameindex).at(0);
+      answer += *(*p)->get_data_by_index(nameindex).at(0);
+      // For PATSTAT, need to read entire name; at(0) only has first word in name
+      // answer += *(*p)->get_data_by_index(nameindex).at(1);
         answer += cBlocking_Operation::delim;
         // answer += *(*p)->get_data_by_index(lastnameindex).at(0);
         // answer += cBlocking_Operation::delim;

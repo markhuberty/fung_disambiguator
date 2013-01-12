@@ -276,7 +276,8 @@ uint32_t cFirstname::current_truncation = 0;
 bool
 cFirstname::split_string(const char *inputdata) {
 
-    static const char delim = ' ';
+  // static const char delim = ' ';
+  static const char delim = '\0';
     Attribute::split_string(inputdata);
     const string * psource = get_data().at(0);
     const size_t pos = psource->find(delim);
