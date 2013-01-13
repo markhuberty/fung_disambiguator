@@ -77,6 +77,30 @@
   input files are different, the ~delim~ definition in
   ~split_string~ in ~attribute.cpp~ needs to be updated.
 
+* Changing the behavior of the Firstname attribute
+  The "Name" attribute is pushed into a ~Firstname~ attribute object for
+  convenience. However, ~Firstname~ has a defined ~split_string~
+  method that assumes that all first name data are formatted ~<first
+  name><space><middle name>~. It therefore splits the string on input,
+  stores the first full word in the first field attribute, and the
+  original full string in the second field attribute. 
 
+  This is problematic b/c (1) PATSTAT doesn't have reliable name field
+  formatting and (2) the disambiguator code hard-codes the use of the
+  first field (first full word) in a lot of places. Hence the
+  disambiguator logic /will not/ behave correctly unless this is
+  fixed. 
+
+  There are 2 ways to do this:
+  1. Change the delimiter used by ~Firstname::split_string~ to "\0"
+     (C++ string null terminator) so that the 0-position attribute
+     field is in fact the split string
+  2. Change every instance of references to the zero-position
+     attribute to reference the 1-position. 
+
+  At present we've implemented a mix of these approaches. It would be
+  better to simply do (1), or alternatively redefine the split string
+  approach to return the full string. 
+     
 
 * Correctly handling the "nomatch" training sets
