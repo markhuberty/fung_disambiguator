@@ -1,6 +1,6 @@
 //Configuration file for the Disambiguation Engine
 WORKING DIRECTORY = /mnt/db_master/patstat_raw/disambig_input_data
-ORIGINAL CSV FILE = /mnt/db_master/patstat_raw/disambig_input_data/nl_test_data.csv
+ORIGINAL CSV FILE = /mnt/db_master/patstat_raw/disambig_input_data/nl_test_data_26Feb2013.csv
 NUMBER OF THREADS = 2
 GENERATE STABLE TRAINING SETS = true
 USE AVAILABLE RATIOS DATABASE = false
@@ -14,5 +14,5 @@ ADJUST PRIOR BY FREQUENCY = true
 DEBUG MODE = false
 NUMBER OF TRAINING PAIRS = 10000000
 STARTING ROUND = 1
-STARTING FILE = /mnt/db_master/patstat_raw/disambig_output_data/nl_test_output.txt
+STARTING FILE = /mnt/db_master/patstat_raw/disambig_output_data/nl_test_output_26Feb2013.txt
 POSTPROCESS AFTER EACH ROUND = true
