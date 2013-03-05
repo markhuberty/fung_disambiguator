@@ -9,7 +9,7 @@ THRESHOLDS = 0.99, 0.95
 // Middlename, Longitude, Class, Latitude, Coauthor, Assignee, AsgNum, 
 // Country, Street, ApplyYear, City, Patent
 
-NECESSARY ATTRIBUTES = Name, Unique_Record_ID, LegalId, Class, Coauthor, Country, Year, Patent, Address, Locality
+NECESSARY ATTRIBUTES = Name, Unique_Record_ID, LegalId, Class, Coauthor, Country, Lat, Lng, Year, Patent, Address, Locality
 ADJUST PRIOR BY FREQUENCY = true
 DEBUG MODE = false
 NUMBER OF TRAINING PAIRS = 10000000
