@@ -9,10 +9,10 @@ THRESHOLDS = 0.99, 0.95
 // Middlename, Longitude, Class, Latitude, Coauthor, Assignee, AsgNum, 
 // Country, Street, ApplyYear, City, Patent
 
-NECESSARY ATTRIBUTES = Name, Unique_Record_ID, LegalId, Class, Coauthor, Lat, Lng, Country, Year, Patent, Address, Locality
+NECESSARY ATTRIBUTES = Name, Unique_Record_ID, LegalId, Class, Coauthor, Country, Year, Patent, Address, Locality
 ADJUST PRIOR BY FREQUENCY = true
 DEBUG MODE = false
 NUMBER OF TRAINING PAIRS = 10000000
 STARTING ROUND = 1
-STARTING FILE = /mnt/db_master/patstat_raw/disambig_output_data/nl_test_output_26Feb2013.txt
+STARTING FILE = /mnt/db_master/patstat_raw/disambig_output_data/nl_test_output_5March2013.txt
 POSTPROCESS AFTER EACH ROUND = true

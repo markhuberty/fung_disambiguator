@@ -14,18 +14,18 @@ position, number of characters to extract, direction (forward=true).
 Name: 1 : 0,8,true
 LegalId: 0 : 0,0, true
 Locality: 0 : 0,0, true
-ACTIVE SIMILARITY ATTRIBUTES: Name, Lng
+ACTIVE SIMILARITY ATTRIBUTES: Name
 
 [ Round 2 ]
 Name: 1 : 0,5 , true
 Locality: 0 : 0,0, true
-ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Lng, Coauthor, Class
+ACTIVE SIMILARITY ATTRIBUTES: Name, Coauthor, Class
 
 [ Round 3 ]
 Name: 1 : 0,3 , true
-ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Lng, Coauthor, Class
+ACTIVE SIMILARITY ATTRIBUTES: Name, Coauthor, Class
 
 [ Round 4 ]
 Name: 1 : 0,1 , true
-ACTIVE SIMILARITY ATTRIBUTES: Name, LegalId, Lng, Coauthor, Class
+ACTIVE SIMILARITY ATTRIBUTES: Name, Coauthor, Class
 
